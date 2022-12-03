@@ -1,6 +1,6 @@
 # 🌲 Advent of Code 2022 🌲
                                  
-Template coming for the one and only David Olivé, lots of ❤️and thanks for this 👇
+Template coming for the one and only David Olivé (@davidolivefarga), lots of ❤️and thanks for this 👇
 
 Solutions for the [Advent of Code 2022](https://adventofcode.com/2022) puzzles, written in Javascript.
 

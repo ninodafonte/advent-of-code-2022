@@ -1,6 +1,6 @@
 # 🌲 Advent of Code 2022 🌲
                                  
-Template coming for the one and only David Olivé (@davidolivefarga), lots of ❤️and thanks for this 👇
+Template coming for the one and only David Olivé ([@davidolivefarga](https://github.com/davidolivefarga)), lots of ❤️and thanks for this 👇
 
 Solutions for the [Advent of Code 2022](https://adventofcode.com/2022) puzzles, written in Javascript.
 
@@ -60,3 +60,4 @@ Here's the list of all days, along with the stars obtained in each of them.
 | Day                                      |  Stars  |
 | :--------------------------------------- | :-----: |
 | [Day 1: Calorie Counting](./day1) | ⭐️ ⭐️ |
+| [Day 2: Rock Paper Scissors](./day2) | ⭐️ ⭐️ |

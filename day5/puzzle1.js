@@ -1,5 +1,5 @@
 const input = require("./input");
-const NUM_OF_CRATES = 3;
+const NUM_OF_CRATES = 9;
 
 const mappedValues = {
   ' ': '-',
@@ -19,12 +19,12 @@ function initCratesContainer() {
 function parseCrates() {
   let data = initCratesContainer();
   let cratesData = input.split('\n')
-    .filter((elem, index) => index < NUM_OF_CRATES)
+    .filter((elem, index) => index < 8)
     .reverse()
     .map((elem) => {
       return elem.replace(/ |\[|]/gi, (sym) => mappedValues[sym])
-        .replace('--', '#')
-        .replace(/-/gi, '')
+        .replaceAll('----', '#')
+        .replaceAll('-', '')
         .substring(1)
     });
 
@@ -40,10 +40,33 @@ function parseCrates() {
 }
 
 function parseCommands() {
+  const commands = input.split('\n')
+    .filter((elem) => { return elem.substring(0, 4) === 'move' })
+    .map((elem) => {
+      let matches = elem.match(/move\s(\d*)\sfrom\s(\d*)\sto\s(\d*)/);
+      return [matches[1], matches[2], matches[3]]
+    });
 
+  return commands;
+}
+
+function executeCommands(crates, commands) {
+  for (let command in commands) {
+    const [numBoxes, srcStack, destStack] = commands[command];
+    for (let i = 0; i < numBoxes; i++) {
+      let elem = crates[srcStack - 1].pop();
+      crates[destStack - 1].push(elem);
+    }
+  }
+
+  return crates;
 }
 
 let crates = parseCrates();
+
+console.log(crates)
 let commands = parseCommands();
 
-console.log(crates);
+let result = executeCommands(crates, commands);
+
+console.log(result.map((elem) => elem.pop()).join(''));

@@ -1,5 +1,6 @@
 const input = require("./input");
 const NUM_OF_CRATES = 9;
+const END_OF_CRATES_DEFINITION = 8; // do this dynamically, maybe, or not.
 
 const mappedValues = {
   ' ': '-',
@@ -19,7 +20,7 @@ function initCratesContainer() {
 function parseCrates() {
   let data = initCratesContainer();
   let cratesData = input.split('\n')
-    .filter((elem, index) => index < 8)
+    .filter((elem, index) => index < END_OF_CRATES_DEFINITION)
     .reverse()
     .map((elem) => {
       return elem.replace(/ |\[|]/gi, (sym) => mappedValues[sym])
@@ -63,8 +64,6 @@ function executeCommands(crates, commands) {
 }
 
 let crates = parseCrates();
-
-console.log(crates)
 let commands = parseCommands();
 
 let result = executeCommands(crates, commands);

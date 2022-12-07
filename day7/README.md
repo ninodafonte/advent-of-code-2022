@@ -46,28 +46,32 @@ $ ls
 
 ### Objective
 
-TODO: Add first puzzle objective
-
-### Solution
-
 To begin, find all of the directories with a total size of at most 100000, then calculate the sum of their total sizes. In the example above, these directories are a and e; the sum of their total sizes is 95437 (94853 + 584). (As in this example, this process can count files more than once!)
 
 Find all of the directories with a total size of at most 100000. What is the sum of the total sizes of those directories?
+
+### Solution
 
 I got it working with some ugly parsing, array sorting and grouping. Probably not the best option but I wasn't very motivated today (and quite bored with the challenge to be honest.). There is probably a big bug with the sums of the parent folders but I don't plan to invest more time on this. Let's see tomorrow.
 
 ## 🧩 Second puzzle
 
-gave up, too boring.
+A bit more filtering with Math min and done.
 
 ### Objective
 
-TODO: Add second puzzle objective
+Find the smalles folder we need to delete to have enough free space
 
 ### Solution
 
-TODO: Add second puzzle solution explanation
-
 ```js
-// TODO: Add second puzzle solution
+let spaceFree = 70000000 - pathsAndSizes.filter((elem) => elem.path === '/')[0].total;
+let spaceNeeded = 30000000 - spaceFree;
+
+let folderToDelete = Math.min(
+  ...pathsAndSizes.filter((elem) => elem.total > spaceNeeded)
+    .map((elem) => elem.total)
+);
+
+console.log(folderToDelete);
 ```

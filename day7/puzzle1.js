@@ -39,24 +39,21 @@ function parseCommands() {
   }
 }
 
-function summarizeTotalsByParentFolder() {
-  device.sort((elemA, elemB) => elemA.path > elemB.path ? 1 : 0).reverse();
-  let pathsAndSizes = device.map((elem) => {
-    return {"path": elem.path, "total": elem.total}
-  });
+parseCommands();
+device.sort((elemA, elemB) => elemA.path > elemB.path ? 1 : 0).reverse();
+let pathsAndSizes = device.map((elem) => {
+  return {"path": elem.path, "total": elem.total}
+});
 
-  for (let i = 0; i < pathsAndSizes.length; i++) {
-    let children = pathsAndSizes.filter((elem) => elem.path.includes(pathsAndSizes[i].path));
-    let sumChildren = children.reduce((acc, next) => {
-      return acc + next.total
-    }, 0);
-    pathsAndSizes[i].total = sumChildren;
-  }
-  return pathsAndSizes;
+for (let i = 0; i < pathsAndSizes.length; i++) {
+  let children = pathsAndSizes.filter((elem) => elem.path.includes(pathsAndSizes[i].path));
+  let sumChildren = children.reduce((acc, next) => {
+    return acc + next.total
+  }, 0);
+  pathsAndSizes[i].total = sumChildren;
 }
 
-parseCommands();
-let total = summarizeTotalsByParentFolder().filter((elem) => { return elem.total <= 100000 && elem.total > 0 })
+let total = pathsAndSizes.filter((elem) => { return elem.total <= 100000 && elem.total > 0 })
     .map((elem) => elem.total)
     .reduce((acc, item) => { return acc + item });
 

@@ -4,12 +4,42 @@ You can find the puzzles [here](https://adventofcode.com/2022/day/7).
 
 ## ✍🏼 Input
 
-TODO: Add input description
+You can hear birds chirping and raindrops hitting leaves as the expedition proceeds. Occasionally, you can even hear much louder sounds in the distance; how big do the animals get out here, anyway?
+
+The device the Elves gave you has problems with more than just its communication system. You try to run a system update:
+
+$ system-update --please --pretty-please-with-sugar-on-top
+Error: No space left on device
+Perhaps you can delete some files to make space for the update?
+
+You browse around the filesystem to assess the situation and save the resulting terminal output (your puzzle input). For example:
 
 Example:
 
-```js
-// TODO: Add input example
+```text
+$ cd /
+$ ls
+dir a
+14848514 b.txt
+8504156 c.dat
+dir d
+$ cd a
+$ ls
+dir e
+29116 f
+2557 g
+62596 h.lst
+$ cd e
+$ ls
+584 i
+$ cd ..
+$ cd ..
+$ cd d
+$ ls
+4060174 j
+8033020 d.log
+5626152 d.ext
+7214296 k
 ```
 
 ## 🧩 First puzzle
@@ -20,13 +50,15 @@ TODO: Add first puzzle objective
 
 ### Solution
 
-TODO: Add first puzzle solution explanation
+To begin, find all of the directories with a total size of at most 100000, then calculate the sum of their total sizes. In the example above, these directories are a and e; the sum of their total sizes is 95437 (94853 + 584). (As in this example, this process can count files more than once!)
 
-```js
-// TODO: Add first puzzle solution
-```
+Find all of the directories with a total size of at most 100000. What is the sum of the total sizes of those directories?
+
+I got it working with some ugly parsing, array sorting and grouping. Probably not the best option but I wasn't very motivated today (and quite bored with the challenge to be honest.). There is probably a big bug with the sums of the parent folders but I don't plan to invest more time on this. Let's see tomorrow.
 
 ## 🧩 Second puzzle
+
+gave up, too boring.
 
 ### Objective
 
